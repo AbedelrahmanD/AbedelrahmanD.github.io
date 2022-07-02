@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/logo.png">
+    <title>Abedelrahman's Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
+    <script defer src="js/alpine.min.js"></script>
+    <script defer src="js/intersect.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/iconify.min.js"></script>
+
+</head>
+
+<body x-data="data()">
+
+    <div class="container">
+        <div class="sideBarWidth"></div>
+        <nav class="sideBar">
+            <template x-for="item in nav">
+                <a :href="`#${item.name}`" @click="selectedNavItem=item.name" class="navItem"
+                    :class="item.name==selectedNavItem && 'selectedNavItem' ">
+                    <span class="iconify" :data-icon="item.icon"></span>
+                </a>
+            </template>
+            <a target="_blank" :href="cvUrl" class="navItem">
+                <span class="iconify" data-icon="icon-park-outline:doc-success"></span>
+            </a>
+            <a target="_blank" :href="githubUrl" class="navItem">
+                <span class="iconify" data-icon="akar-icons:github-fill"></span>
+            </a>
+            <a target="_blank" :href="whatsappUrl" class="navItem">
+                <span class="iconify" data-icon="mdi:whatsapp"></span>
+            </a>
+            <a :href="dialUrl" class="navItem">
+                <span class="iconify dialIcon" data-icon="fluent:dialpad-32-regular"></span>
+            </a>
+
+        </nav>
+        <div class="content" x-init="setInterval(function(){
+        selectedStack++;
+        if(selectedStack>=stack.length){
+            selectedStack=0;
+        }
+        },2000);">
+
+            <section id="home" class="home" x-intersect.half="selectedNavItem='home'">
+                <div class="homeContent">
+                    <h1>Hi, Iam Abedelrahman</h1>
+                    <h2>and Iam
+                        <template x-for="(option,index) in stack">
+                            <span class="slideUp" :style="`color:${option.color}`" x-show="index==selectedStack"
+                                x-text="option.name"></span>
+                        </template>
+                    </h2>
+                    <div class="info">
+                        <h3>
+                            <span class="iconify" data-icon="charm:phone"></span>
+                            <span x-text="email"></span>
+                        </h3>
+                        <h3>
+                            <span class="iconify" data-icon="carbon:email"></span>
+                            <span x-text="phone"></span>
+                        </h3>
+                    </div>
+                </div>
+                <div class="stackImage">
+                    <template x-for="(option,index) in stack">
+                        <div>
+                            <span class="slideUp iconify" :style="`color:${option.color}`" :data-icon="option.icon"
+                                x-show="index==selectedStack"></span>
+                        </div>
+                    </template>
+                </div>
+            </section>
+
+
+            <section id="technologies" class="technologies" x-intersect.half="selectedNavItem='technologies'">
+                <h3 class="sectionTitle">
+                    <span class="iconify" data-icon="bi:code-slash"></span>
+                    Technologies
+                </h3>
+                <div class="technologiesGrid">
+                    <template x-for="tech in technologies">
+                        <div class="tech">
+                            <span :style="`color:${tech.color}`" class="techIcon iconify" :data-icon="tech.icon"></span>
+                            <span class="techName" x-text="tech.name"></span>
+                        </div>
+                    </template>
+                </div>
+            </section>
+
+            <section id="projects" class="projects" x-intersect.half="selectedNavItem='projects'">
+                <h3 class="sectionTitle">
+                    <span class="iconify" data-icon="carbon:idea"></span>
+                    Projects
+                </h3>
+                <div class="projectsGrid">
+                    <template x-for="project in projects">
+                        <a :href="project.link" target="_blank" class="project">
+                            <img :src="`images/${project.img}`" :alt="project.img">
+                            <div class="projectTechnologies">
+                                <template x-for="tech in project.technologies">
+                                    <div>
+                                        <span class="iconify"
+                                            :style="`color:${technologies.filter(t=>t.id==`${tech}`)[0].color}`"
+                                            :data-icon="technologies.filter(t=>t.id==`${tech}`)[0].icon"></span>
+
+                                    </div>
+                                </template>
+                            </div>
+                        </a>
+                    </template>
+                </div>
+            </section>
+
+            <section id="contactMe" class="contactMe" x-intersect.half="selectedNavItem='contactMe'">
+                <h3 class="sectionTitle">
+                    <span class="iconify" data-icon="carbon:email"></span>
+                    Contact Me
+                </h3>
+                <div class="contactUsInfo">
+                    <form action="#">
+                        <div class="inputContainer">
+                            <input class="input" type="email" required placeholder=" ">
+                            <label>Email</label>
+                        </div>
+                        <div class="inputContainer">
+                            <input class="input" type="text" required placeholder=" ">
+                            <label>Subject</label>
+                        </div>
+                        <div class="inputContainer">
+                            <textarea class="input" cols="30" rows="10" required placeholder=" "></textarea>
+                            <label>Message</label>
+                        </div>
+                        <button class="cmButton">Submit</button>
+                    </form>
+                    <div class="chatInfo">
+                        <a target="_blank" :href="whatsappUrl">
+                            <span class="iconify" data-icon="mdi:whatsapp"></span>
+                        </a>
+                        <a :href="dialUrl">
+                            <span class="iconify dialIcon" data-icon="fluent:dialpad-32-regular"></span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

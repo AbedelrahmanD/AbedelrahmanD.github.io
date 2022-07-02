@@ -1,0 +1,346 @@
+:root {
+    --primary: white;
+    --bg: #151515;
+    --secondar: #202020;
+    --borderRadius: 8px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg);
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
+
+.container {
+    display: flex;
+    /* align-items: center; */
+    min-height: 100vh;
+    padding: 0 10px;
+}
+
+.sideBar,
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.sideBarWidth,
+.sideBar {
+    min-height: 98vh;
+    height: 100%;
+    width: 70px;
+}
+
+.sideBar {
+    background-color: var(--secondar);
+    border-radius: var(--borderRadius);
+    position: fixed;
+    left: 0;
+}
+
+.navItem {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid white;
+    color: white;
+    border-radius: var(--borderRadius);
+    width: 80%;
+    margin: 5px auto;
+    font-weight: bold;
+    font-size: 2rem;
+    transition: all 0.2s cubic-bezier(0.22, 1.24, 0.39, 1.32);
+}
+
+.selectedNavItem {
+    background-color: white;
+    color: var(--secondar);
+
+}
+@media (hover: hover) {
+    .navItem:hover {
+        background-color: white;
+        color: var(--secondar);
+    
+    }
+  }
+
+.selectedNavItem {
+    /* transform: scale(1.1); */
+}
+
+.content {
+    /* background-color: white; */
+    /* height: 100vh; */
+    width: 100%;
+    padding: 50px;
+    /* overflow-y: scroll; */
+    /* overflow-x: hidden; */
+}
+
+.content section {
+    /* flex-shrink: 0; */
+    /* height: 100vh; */
+    /* max-width: 1500px;
+    margin: auto; */
+    position: relative;
+    margin: 10px 0;
+}
+
+
+.home {
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.homeContent {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+
+}
+
+.home h1,
+.home h2 {
+    margin: 10px 0;
+}
+
+.home h1 {
+    font-size: 5rem;
+}
+
+.home h2 {
+    font-size: 2rem;
+}
+
+.slideUp {
+    display: inline-block;
+    animation: 0.5s slideUpAnimation ease-in-out forwards;
+}
+
+@keyframes slideUpAnimation {
+    0% {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+.home .info {
+    display: flex;
+    flex-direction: column;
+}
+
+.home .info h3 {
+    margin: 5px 0;
+    font-size: 2rem;
+}
+
+.stackImage {
+    font-size: 30rem;
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.technologies {
+    /* height: 100vh; */
+}
+
+.sectionTitle {
+    font-size: 3rem;
+    color: white;
+    font-weight: bold;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+}
+
+.projectsGrid,
+.technologiesGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tech {
+    position: relative;
+    cursor: help;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.techIcon {
+    width: 200px;
+    height: 200px;
+    padding: 30px;
+}
+
+.techName {
+    position: absolute;
+    opacity: 0;
+    top: 80%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 80%;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.5s;
+}
+
+.tech:hover .techName {
+    opacity: 0.8;
+    top: 40%;
+    background-color: white;
+    color: var(--secondar);
+    padding: 10px;
+    border-radius: var(--borderRadius);
+}
+
+.project {
+    position: relative;
+    width: 280px;
+    margin: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.projectTechnologies {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(7, 7, 7, 0.842);
+    opacity: 0;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.project:hover .projectTechnologies {
+    opacity: 1;
+}
+
+.project .projectTechnologies div .iconify {
+    font-size: 3rem;
+    margin: 0 5px;
+}
+
+.project img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.contactUsInfo{
+    display: flex;
+}
+.contactUsInfo form{
+    width: 60%;
+}
+
+.inputContainer {
+    position: relative;
+    width: 100%;
+    background-color: var(--secondar);
+    margin: 15px 0;
+    border-radius: 5px;
+
+}
+
+.inputContainer label {
+    position: absolute;
+    top: 35%;
+    left: 10px;
+    pointer-events: none;
+    transition: all 0.5s;
+    color: white;
+}
+
+
+.inputContainer .input{
+    width: 100%;
+    height: 100%;
+    color: rgb(163, 156, 156);
+    background-color: transparent;
+    outline: none;
+    border: none;
+    padding:15px 13px;
+    padding-top: 28px;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+.inputContainer .input:not(:placeholder-shown)+ label,
+.inputContainer .input:valid + label,
+.inputContainer .input:focus + label{
+    top: 5px;
+}
+.cmButton{
+    padding: 1rem 1.5rem;
+    border: 1px solid  white;
+    background-color: white;
+    color: var(--secondar);
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: bold;
+}
+.cmButton:hover{
+    opacity: 0.8;
+}
+.cmButton:focus,
+.inputContainer .input:focus{
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.329);
+}
+.chatInfo{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.chatInfo .iconify{
+    font-size: 10rem;
+    padding: 20px 0;
+    margin: 5px 0;
+    cursor: pointer;
+    color: #e0d8d8;
+    transition: all 0.5s;
+}
+.chatInfo .iconify:hover{
+    background-color: var(--secondar);
+    border-radius: 100px;
+    color: white;
+}
