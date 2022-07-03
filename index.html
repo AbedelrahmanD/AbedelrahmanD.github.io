@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="images/logo.png">
     <title>Abedelrahman's Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Finlandica&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/media.css">
     <script defer src="js/alpine.min.js"></script>
@@ -16,7 +17,7 @@
 
 </head>
 
-<body x-data="data()">
+<body x-data="data()" x-cloak>
 
     <div class="container">
         <div class="sideBarWidth"></div>
@@ -50,8 +51,8 @@
 
             <section id="home" class="home" x-intersect.half="selectedNavItem='home'">
                 <div class="homeContent">
-                    <h1>Hi, Iam Abedelrahman</h1>
-                    <h2>and Iam
+                    <h1>Hi, I am Abedelrahman</h1>
+                    <h2>and I am
                         <template x-for="(option,index) in stack">
                             <span class="slideUp" :style="`color:${option.color}`" x-show="index==selectedStack"
                                 x-text="option.name"></span>
@@ -59,11 +60,11 @@
                     </h2>
                     <div class="info">
                         <h3>
-                            <span class="iconify" data-icon="charm:phone"></span>
+                            <span class="iconify" data-icon="carbon:email"></span>
                             <span x-text="email"></span>
                         </h3>
                         <h3>
-                            <span class="iconify" data-icon="carbon:email"></span>
+                            <span class="iconify" data-icon="charm:phone"></span>
                             <span x-text="phone"></span>
                         </h3>
                     </div>
@@ -79,10 +80,10 @@
             </section>
 
 
-            <section id="technologies" class="technologies" x-intersect.half="selectedNavItem='technologies'">
+            <section id="skills" class="technologies" x-intersect.half="selectedNavItem='skills'">
                 <h3 class="sectionTitle">
                     <span class="iconify" data-icon="bi:code-slash"></span>
-                    Technologies
+                    Skills
                 </h3>
                 <div class="technologiesGrid">
                     <template x-for="tech in technologies">
@@ -101,19 +102,22 @@
                 </h3>
                 <div class="projectsGrid">
                     <template x-for="project in projects">
-                        <a :href="project.link" target="_blank" class="project">
+                        <div class="project">
                             <img :src="`images/${project.img}`" :alt="project.img">
                             <div class="projectTechnologies">
-                                <template x-for="tech in project.technologies">
-                                    <div>
-                                        <span class="iconify"
-                                            :style="`color:${technologies.filter(t=>t.id==`${tech}`)[0].color}`"
-                                            :data-icon="technologies.filter(t=>t.id==`${tech}`)[0].icon"></span>
+                                <div>
+                                    <template x-for="tech in project.technologies">
+                                        <div>
+                                            <span class="iconify"
+                                                :style="`color:${technologies.filter(t=>t.id==`${tech}`)[0].color}`"
+                                                :data-icon="technologies.filter(t=>t.id==`${tech}`)[0].icon"></span>
 
-                                    </div>
-                                </template>
+                                        </div>
+                                    </template>
+                                </div>
+                                <a :href="project.link" target="_blank">Visit</a>
                             </div>
-                        </a>
+                        </div>
                     </template>
                 </div>
             </section>
@@ -124,21 +128,25 @@
                     Contact Me
                 </h3>
                 <div class="contactUsInfo">
-                    <form action="#">
+                    <form action="https://formspree.io/f/xbjwvjrp" method="POST"
+                    x-show="formStatus==''"
+                        @submit.prevent="sendEmail($refs.contact)" x-ref="contact">
                         <div class="inputContainer">
-                            <input class="input" type="email" required placeholder=" ">
+                            <input name="email" class="input" type="email" required placeholder=" ">
                             <label>Email</label>
                         </div>
                         <div class="inputContainer">
-                            <input class="input" type="text" required placeholder=" ">
-                            <label>Subject</label>
-                        </div>
-                        <div class="inputContainer">
-                            <textarea class="input" cols="30" rows="10" required placeholder=" "></textarea>
+                            <textarea name="message" class="input" cols="30" rows="10" required
+                                placeholder=" "></textarea>
                             <label>Message</label>
                         </div>
-                        <button class="cmButton">Submit</button>
+                        <button class="cmButton"  :disabled="isLoading">
+                            Submit
+                            <div class="spinner" x-show="isLoading"></div>
+                        </button>
+                      
                     </form>
+                    <p class="formStatus"  x-transition x-show="formStatus!=''" x-text="formStatus"></p>
                     <div class="chatInfo">
                         <a target="_blank" :href="whatsappUrl">
                             <span class="iconify" data-icon="mdi:whatsapp"></span>

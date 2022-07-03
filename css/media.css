@@ -74,16 +74,8 @@
 
     .cmButton {
         padding: 0.5rem 1rem;
+        font-size: 1rem;
     }
-
-    /* .technologiesGrid{
-       justify-content: center;
-    }
-    .techIcon {
-        width: 20vw;
-        height: 10px;
-        padding: 10px;
-    } */
 }
 
 @media screen and (max-width:400px) {
