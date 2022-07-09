@@ -150,6 +150,16 @@ function data() {
                 technologies: ["vue", "bootstrap", "express", "mysql"],
                 link: "https://sellink.netlify.app"
             },
+            {
+                img: "detect_scroll.png",
+                technologies: ["html","jquery"],
+                link: "https://github.com/AbedelrahmanD/JQuery-Detect-Element-On-Scroll"
+            },
+            {
+                img: "auto_form_validation.png",
+                technologies: ["html","javascript"],
+                link: "https://github.com/AbedelrahmanD/Auto-Form-Validation.JS"
+            },
 
         ],
         isLoading:false,
