@@ -160,6 +160,12 @@ function data() {
                 technologies: ["html","javascript"],
                 link: "https://github.com/AbedelrahmanD/Auto-Form-Validation.JS"
             },
+            {
+                img: "dataform.png",
+                technologies: ["html","javascript"],
+                link: "https://github.com/AbedelrahmanD/DataForm.JS"
+            },
+           
 
         ],
         isLoading:false,
