@@ -133,22 +133,22 @@ function data() {
             {
                 img: "goblogs.png",
                 technologies: ["jquery", "sass", "laravel", "mysql"],
-                link: "http://go-blogs.great-site.net"
+                link: "#"
             },
             {
                 img: "menubook.png",
                 technologies: ["jquery", "css", "laravel", "mysql"],
-                link: "http://menu-book.great-site.net"
+                link: "#"
             },
             {
                 img: "adshop.png",
                 technologies: ["jquery", "sass", "php", "mysql"],
-                link: "http://ad-shop.epizy.com/"
+                link: "#"
             },
             {
                 img: "sellink.png",
                 technologies: ["vue", "bootstrap", "express", "mysql"],
-                link: "https://sellink.netlify.app"
+                link: "#"
             },
             {
                 img: "detect_scroll.png",
